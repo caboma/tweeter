@@ -1,0 +1,12 @@
+header {
+  background-color: coral;
+  color: #ffffff;
+  height: 400px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+  display: flex;
+  flex-direction: column;
+  padding-top: 50px;
+}
