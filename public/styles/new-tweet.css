@@ -17,14 +17,23 @@
   display: flex;
   justify-content: space-between;
 }
-.new-tweet .footer .btn{
+.footer .btn{
   font-family: 'Bungee', cursive;
+  font-size: 15px;
+  padding: 10px;
+  background-color: #0bb6fa ;
   color: #ffffff;
-  background-color: #4056A1;
   border: 0px;
+  border-radius: 50px;
   justify-content: flex-start;
 }
-.new-tweet .footer .counter {
+.footer .btn:hover{
+  cursor: pointer;
+  color: #5F5566;
+  background-color: #8AEA92 ;
+  border: 1px solid #22ee07;
+}
+.footer .counter {
   font-family: 'Bungee', cursive;
   justify-content: flex-end;
 }
