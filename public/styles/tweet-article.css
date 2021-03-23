@@ -1,0 +1,35 @@
+article.tweet {
+  border: 2px solid black;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+article.tweet:hover{
+  box-shadow: 0px 5px 10px slategray;
+}
+
+article.tweet:hover header p{
+  display: flex;
+}
+
+article.tweet header{
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+}
+article.tweet header h3{
+  flex-grow: 4;
+}
+article.tweet header img{
+  padding-right: 30px;
+}
+article.tweet header p{
+  display: none;
+}
+
+article.tweet footer{
+  display: flex;
+  padding: 0px 20px;
+  border-top: 2px solid black;
+  justify-content: space-between;
+}
