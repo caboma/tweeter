@@ -1,11 +1,13 @@
 article.tweet {
-  border: 2px solid black;
+  border: 2px solid #80ADA0;
   padding: 20px;
   margin-bottom: 30px;
+  border-radius: 20px 0px 20px 0px;
 }
 
 article.tweet:hover{
   box-shadow: 0px 5px 10px slategray;
+  background-color: #F7F8F2;
 }
 
 article.tweet:hover header p{
@@ -25,11 +27,12 @@ article.tweet header img{
 }
 article.tweet header p{
   display: none;
+  color: #4056A1;
 }
 
 article.tweet footer{
   display: flex;
   padding: 0px 20px;
-  border-top: 2px solid black;
+  border-top: 2px solid #80ADA0;
   justify-content: space-between;
 }
