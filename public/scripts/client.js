@@ -52,6 +52,11 @@ const loadTweets = () => {
   })
     .then(res => renderTweets(res))
 }
+const handleError = (err) => {
+  if (err === 'maxChar') {
+    $('.alertMessage').fadeIn(1000);
+  }
+}
 
 const handleSubmit = event => {
   //stop the default action of the form reload 
@@ -64,9 +69,9 @@ const handleSubmit = event => {
     alert('Tweet message should not be empty');
   } else {
     if (tweetStr.length > 140) {
-      alert ('Your message is too long. Max character should be 140 only.');
+      handleError('maxChar');
     } else {
-      postNewTweet(serialStr)
+      postNewTweet(serialStr);
     }
   }
 }
