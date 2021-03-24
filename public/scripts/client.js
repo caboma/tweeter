@@ -29,10 +29,9 @@ $(document).ready(function(){
       "created_at": 1461113959088
     }
   ]
+
+  //Loop through the tweets and append to html
   const renderTweets = function(tweets) {
-    // loops through tweets
-    // calls createTweetElement for each tweet
-    // takes return value and appends it to the tweets container
     
     for (let tweet in tweets) {
       $tweet = createTweetElement(tweets[tweet]);
@@ -40,6 +39,7 @@ $(document).ready(function(){
     }
   }
   
+  //Render tweet components to be appended
   const createTweetElement = function (tweet) {
     let $tweet = `
     <article class="tweet">
