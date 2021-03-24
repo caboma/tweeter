@@ -1,53 +1,13 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
-
-$(document).ready(function(){
-  const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png"
-        ,
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd" },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
-    }
-  ]
-  
-  //Loop through the tweets and append to inner-container
-  const renderTweets = function(tweets) {
-    
-    for (let tweet in tweets) {
-      $tweet = createTweetElement(tweets[tweet]);
-      $(".inner-container").append($tweet);
-    }
-  }
-  //Render tweet components to be appended
-  const createTweetElement = function (tweet) {
-    let $tweet = `
+//Render tweet components to be appended
+const createTweetElement = function (tweet) {
+  let $tweet = `
     <article class="tweet">
       <header>
         <img class="avatar" src="${tweet.user.avatars}">
         <h3>${tweet.user.name}</h3>
         <p>${tweet.user.handle}</p>
       </header>
-      <p>${tweet.content.text}</p>
+      <p>${escape(tweet.content.text)}</p>
       <footer>
         <p>${tweet.created_at}</p>
         <p>
@@ -59,30 +19,67 @@ $(document).ready(function(){
     </article>
   `;
   return $tweet;
-  }
-  renderTweets(data);
+}
 
-
-  const postNewTweet = (tweetStr) => {
+//Loop through the tweets and append to allTweet section
+const renderTweets = function(tweets) {
     
-    $.ajax({
-      url: "/tweets",
-      method: "POST",
-      data: tweetStr
-    })
-      .then(res => console.log('sent to tweet', res))
-      .catch(err => console.log(err))
+  for (let tweet of tweets) {
+    $tweet = createTweetElement(tweet);
+    $(".allTweets").prepend($tweet);
   }
-  //stop the default action of the form by reload 
-  const handleSubmit = event => {
-    event.preventDefault(); 
-    let tweetStr = $("form").serialize()
-    postNewTweet(tweetStr)
-  }
+}
 
+//Submit new tweet to the server using ajax
+const postNewTweet = (tweetStr) => {
+  $.ajax({
+    url: "/tweets",
+    method: "POST",
+    data: tweetStr
+  })
+  .then(res => {
+    $('.allTweets').empty();
+    loadTweets();
+    $("#tweet-text").val("");
+  })
+}
+
+//fetch all tweets in the server and call renderTweet function to append
+const loadTweets = () => {
+  $.ajax({
+    url: "/tweets",
+    method: "GET"
+  })
+    .then(res => renderTweets(res))
+}
+
+const handleSubmit = event => {
+  //stop the default action of the form reload 
+  event.preventDefault(); 
+  
+  let tweetStr = $('#tweet-text').val();
+  let  serialStr= $('#tweet-text').serialize()
+
+  if (tweetStr.length === 0) {
+    alert('Tweet message should not be empty');
+  } else {
+    if (tweetStr.length > 140) {
+      alert ('Your message is too long. Max character should be 140 only.');
+    } else {
+      postNewTweet(serialStr)
+    }
+  }
+}
+
+//Prevent code injection, secure input handling
+const escape =  function(str) {
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
+
+//Perform js or jquery once document is ready
+$(document).ready(function(){
+  loadTweets();
   $('form').on('submit', handleSubmit)
-  
-  
 })
-
-
