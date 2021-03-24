@@ -30,7 +30,7 @@
   <body>
     <!-- Top nav bar (fixed) -->
     <nav>
-      <span>tweeter</span>
+      <span><a href="/">tweeter</a></span>
       <p><span>write</span> a new tweet</p>
     </nav>
     <header class="main-header">
@@ -46,8 +46,11 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
       <div class="inner-container">
+        <section class="alertMessage">
+          <p><span><i class="fas fa-exclamation-triangle"></i></span> Your message is too long. Max characters should not be more than 140 characters.</p>
+        </section>
         <section class="new-tweet">
-          <form method="POST" action="/tweets">
+          <form>
             <label for="tweet-text">What are you humming about?</label>
             <textarea name="text" id="tweet-text"></textarea>
             <div class="footer">
@@ -55,6 +58,9 @@
               <output name="counter" class="counter" for="tweet-text">140</output>
             </div>
           </form>
+        </section>
+        <section class="allTweets">
+
         </section>
       </div>
     </main>
