@@ -29,8 +29,8 @@ $(document).ready(function(){
       "created_at": 1461113959088
     }
   ]
-
-  //Loop through the tweets and append to html
+  
+  //Loop through the tweets and append to inner-container
   const renderTweets = function(tweets) {
     
     for (let tweet in tweets) {
@@ -38,7 +38,6 @@ $(document).ready(function(){
       $(".inner-container").append($tweet);
     }
   }
-  
   //Render tweet components to be appended
   const createTweetElement = function (tweet) {
     let $tweet = `
@@ -62,6 +61,28 @@ $(document).ready(function(){
   return $tweet;
   }
   renderTweets(data);
+
+
+  const postNewTweet = (tweetStr) => {
+    
+    $.ajax({
+      url: "/tweets",
+      method: "POST",
+      data: tweetStr
+    })
+      .then(res => console.log('sent to tweet', res))
+      .catch(err => console.log(err))
+  }
+  //stop the default action of the form by reload 
+  const handleSubmit = event => {
+    event.preventDefault(); 
+    let tweetStr = $("form").serialize()
+    postNewTweet(tweetStr)
+  }
+
+  $('form').on('submit', handleSubmit)
+  
+  
 })
 
 
