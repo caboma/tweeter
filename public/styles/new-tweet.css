@@ -22,8 +22,8 @@
   margin-bottom: 20px;
 }
 .footer .btn-submit{
-  font-family: 'Bungee', cursive;
-  font-size: 15px;
+  font-weight: 600;
+  font-size: 1rem;
   padding: 10px;
   background-color: #5F5566 ;
   color: #ffffff;
@@ -39,7 +39,7 @@
   border: 1px solid #22ee07;
 }
 .footer .counter {
-  font-family: 'Bungee', cursive;
+  font-weight: 600;
   justify-content: flex-end;
 }
 
@@ -49,12 +49,11 @@
   text-align: center;
   background-color: #8AEA92;
   border-radius: 20px;
-  margin: 10px;
   padding: 1px;
 }
 
 .alertMessage span{
   font-weight:600;
-  font-size: 30px;
+  font-size: 2rem;
   padding: 0px;
 }
