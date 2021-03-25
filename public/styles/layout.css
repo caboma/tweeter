@@ -27,6 +27,7 @@ a {
   color: #545149;
   background-color: #ffffff;
  }
+
  .container .inner-container{
   width: 90%;
   color: #545149;
@@ -34,7 +35,6 @@ a {
   flex-direction: center;
   justify-content: space-between;
  }
-
 
  @media only screen and (max-width: 1024px) {
   .container .inner-container{
