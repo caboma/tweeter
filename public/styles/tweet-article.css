@@ -1,8 +1,8 @@
 article.tweet {
-  border: 2px solid #80ADA0;
-  padding: 20px;
-  margin-bottom: 30px;
+  padding: 1.5rem;
+  border: 1px solid #80ADA0;
   border-radius: 20px 0px 20px 0px;
+  margin: 2rem;
 }
 
 article.tweet:hover{
@@ -19,15 +19,24 @@ article.tweet header{
   padding: 20px;
   justify-content: space-between;
 }
+
 article.tweet header h3{
+  color: #4056A1;
   flex-grow: 4;
 }
+
 article.tweet header img{
-  padding-right: 30px;
+  padding-right: 10px;
 }
+
 article.tweet header p{
   display: none;
   color: #4056A1;
+}
+
+article.tweet .text-content{
+  font-size: 1rem;
+  width: 100%;
 }
 
 article.tweet footer{
