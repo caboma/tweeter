@@ -9,7 +9,7 @@ const createTweetElement = function (tweet) {
       </header>
       <p>${escape(tweet.content.text)}</p>
       <footer>
-        <p>${tweet.created_at}</p>
+        <p>${Date(tweet.created_at)}</p>
         <p>
           <i class="btn fas fa-flag"></i>
           <i class="btn fas fa-retweet"></i>
@@ -54,7 +54,12 @@ const loadTweets = () => {
 }
 const handleError = (err) => {
   if (err === 'maxChar') {
-    $('.alertMessage').fadeIn(1000);
+    $('.content .alertMessage').empty();
+    $('.content .alertMessage').append('<p><span><i class="fas fa-exclamation-triangle"></i></span> &nbsp Your message is too long. Max characters should not be more than 140 characters.</p>').fadeIn(1000);
+  }
+  if (err === 'empty'){
+    $('.content .alertMessage').empty();
+    $('.content .alertMessage').append('<p><span><i class="fas fa-exclamation-triangle"></i></span> &nbsp Message can not be empty!</p>').fadeIn(1000);
   }
 }
 
@@ -66,7 +71,7 @@ const handleSubmit = event => {
   let  serialStr= $('#tweet-text').serialize()
 
   if (tweetStr.length === 0) {
-    alert('Tweet message should not be empty');
+    handleError('empty');
   } else {
     if (tweetStr.length > 140) {
       handleError('maxChar');
