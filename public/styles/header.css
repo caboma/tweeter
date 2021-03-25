@@ -1,16 +1,16 @@
-header.main-header {
+.inner-container .main-header {
   background-color: #5F5566;
   color: #ffffff;
-  height: 500px;
-  width: 100%;
+  height: 400px;
   justify-content: center;
   align-items: center;
   background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
   display: flex;
   flex-direction: column;
-  padding-top: 150px;
+  padding-top: 50px;
   padding-bottom: 20px;
 }
-header.main-header h2{
+.inner-container .main-header h2{
   color: #8AEA92;
 }
+
