@@ -32,6 +32,7 @@ const renderTweets = function(tweets) {
 
 //Submit new tweet to the server using ajax
 const postNewTweet = (tweetStr) => {
+  
   $.ajax({
     url: "/tweets",
     method: "POST",
@@ -46,17 +47,22 @@ const postNewTweet = (tweetStr) => {
 
 //fetch all tweets in the server and call renderTweet function to append
 const loadTweets = () => {
+  
   $.ajax({
     url: "/tweets",
     method: "GET"
   })
     .then(res => renderTweets(res))
 }
+
+//Handle and render error messages
 const handleError = (err) => {
+  
   if (err === 'maxChar') {
     $('.content .alertMessage').empty();
     $('.content .alertMessage').append('<p><span><i class="fas fa-exclamation-triangle"></i></span> &nbsp Your message is too long. Max characters should not be more than 140 characters.</p>').fadeIn(1000);
   }
+
   if (err === 'empty'){
     $('.content .alertMessage').empty();
     $('.content .alertMessage').append('<p><span><i class="fas fa-exclamation-triangle"></i></span> &nbsp Message can not be empty!</p>').fadeIn(1000);
@@ -83,12 +89,12 @@ const handleSubmit = event => {
 
 //New Tweet Form Toggle
 const newTweetToggle = () => {
+  
   if($(this).attr('click-state') === 0) {
     $(this).attr('click-state', 1);
     $('.new-tweet').slideDown(1000);
     $('#tweet-text').focus();
-  }
-  else {
+  } else {
   $(this).attr('click-state', 0);
   $('.new-tweet').slideUp(1000);
   }
@@ -105,9 +111,7 @@ const escape =  function(str) {
 $(document).ready(function(){
   
   loadTweets();
-
   $('form').on('submit', handleSubmit);
-
   $('nav .btn-new').on('click', newTweetToggle);
 
 })
