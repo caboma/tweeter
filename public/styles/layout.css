@@ -12,7 +12,7 @@ html {
 body {
   color: #545149;
   background-color: #ffffff;
-  font-size: 20px;
+  font-size: 1.2rem;
   font-family: 'Source Sans Pro', sans-serif;
 }
 
@@ -31,4 +31,47 @@ a {
   width: 90%;
   color: #545149;
   background-color: #ffffff;
+  flex-direction: center;
+  justify-content: space-between;
+ }
+
+
+ @media only screen and (max-width: 1024px) {
+  .container .inner-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  nav {
+    background-color: none;
+  }
+  .header.main-header {
+    margin: 0px;
+    width: 100%;
+  }
+
+}
+
+ @media only screen and (min-width: 1024px) {
+  .container {
+    margin-top: 8rem;
+  }
+  .container .inner-container{
+    display: flex;
+    flex-direction: row;
+  }
+
+  nav {
+    background-color: rgba(75, 47, 62, 1);
+    box-shadow: 0px 3px 15px #8AEA92;
+    color: #FFFFFF;
+  }
+  .inner-container .content{
+    width: 70%;
+  }
+  .inner-container .main-header{
+    margin: 2rem;
+    width: 30%
+  }
+
  }
