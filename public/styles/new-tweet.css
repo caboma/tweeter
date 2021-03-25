@@ -3,6 +3,7 @@
   padding: 1em;
   font-family: 'Source Sans Pro', sans-serif;
   width: 100%;
+  display: none;
 }
 .new-tweet label {
   font-weight:bold;
