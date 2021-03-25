@@ -76,6 +76,19 @@ const handleSubmit = event => {
   }
 }
 
+//New Tweet Form Toggle
+const newTweetToggle = () => {
+  if($(this).attr('click-state') === 0) {
+    $(this).attr('click-state', 1);
+    $('.new-tweet').slideDown(1000);
+    $('#tweet-text').focus();
+  }
+  else {
+  $(this).attr('click-state', 0);
+  $('.new-tweet').slideUp(1000);
+  }
+}
+
 //Prevent code injection, secure input handling
 const escape =  function(str) {
   let div = document.createElement('div');
@@ -83,8 +96,14 @@ const escape =  function(str) {
   return div.innerHTML;
 }
 
-//Perform js or jquery once document is ready
+
 $(document).ready(function(){
+  
   loadTweets();
-  $('form').on('submit', handleSubmit)
+
+  $('form').on('submit', handleSubmit);
+
+  $('nav .btn-new').on('click', newTweetToggle);
+
 })
+
