@@ -4,21 +4,33 @@ nav {
   top: 0;
   height: 80px;
   width: 100%;
-  background-color: rgba(75, 47, 62, 0.75);
   color: #FFFFFF;
   padding: 1em;
   display: flex;
   justify-content: space-between;
-  box-shadow: 0px 3px 15px #8AEA92;
 }
 nav span{
   font-family: 'Bungee', cursive;
   font-size: 2em;
   color: #8AEA92;
 }
-nav p {
-  justify-content: flex-end;
+
+nav .btn-new {
+  font-size: 16px;
+  background-color: transparent;
+  text-decoration: none;
+  border: none;
+  color: #8AEA92;
+  cursor: pointer;
 }
+
+nav .btn-new:hover {
+  background-color: rgba(110, 250, 133, 0.25);
+  border: 1px solid #8AEA92;
+  border-radius: 20px;
+  color: #fff;
+}
+
 nav p span{
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: bold;
