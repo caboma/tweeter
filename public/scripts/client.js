@@ -1,6 +1,5 @@
 //Render tweet components to be appended
 const createTweetElement = function (tweet) {
-
   let $tweet = `
     <article class="tweet">
       <header>
@@ -21,6 +20,7 @@ const createTweetElement = function (tweet) {
   `;
   return $tweet;
 }
+
 //Calculate the no of days the tweet was posted
 const passDays = (seconds) => {
   let result = ''
@@ -36,6 +36,7 @@ const passDays = (seconds) => {
   }
   return result;
 }
+
 //Loop through the tweets and append to allTweet section
 const renderTweets = function(tweets) {
     
@@ -67,7 +68,7 @@ const loadTweets = () => {
     url: "/tweets",
     method: "GET"
   })
-    .then(res => renderTweets(res))
+    .then(res => renderTweets(res));
 }
 
 //Handle and render error messages
@@ -131,9 +132,7 @@ const escape =  function(str) {
   return div.innerHTML;
 }
 
-
 $(document).ready(function(){
-  
   loadTweets();
   $('form').on('submit', handleSubmit);
   $('nav .btn-new').on('click', newTweetToggle);
