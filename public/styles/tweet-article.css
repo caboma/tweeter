@@ -4,41 +4,33 @@ article.tweet {
   border-radius: 20px 0px 20px 0px;
   margin: 2rem;
 }
-
 article.tweet:hover{
   box-shadow: 0px 5px 10px slategray;
   background-color: #F7F8F2;
 }
-
 article.tweet:hover header p{
   display: flex;
 }
-
 article.tweet header{
   display: flex;
   padding: 20px;
   justify-content: space-between;
 }
-
 article.tweet header h3{
   color: #4056A1;
   flex-grow: 4;
 }
-
 article.tweet header img{
   padding-right: 10px;
 }
-
 article.tweet header p{
   display: none;
   color: #4056A1;
 }
-
 article.tweet .text-content{
   font-size: 1rem;
   width: 100%;
 }
-
 article.tweet footer{
   display: flex;
   padding: 0px 20px;
