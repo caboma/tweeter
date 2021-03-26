@@ -1,5 +1,6 @@
 //Render tweet components to be appended
 const createTweetElement = function (tweet) {
+
   let $tweet = `
     <article class="tweet">
       <header>
@@ -9,7 +10,7 @@ const createTweetElement = function (tweet) {
       </header>
       <p>${escape(tweet.content.text)}</p>
       <footer>
-        <p>${Date(tweet.created_at)}</p>
+        <p>${passDays(tweet.created_at)}</p>
         <p>
           <i class="btn fas fa-flag"></i>
           <i class="btn fas fa-retweet"></i>
@@ -20,7 +21,21 @@ const createTweetElement = function (tweet) {
   `;
   return $tweet;
 }
-
+//Calculate the no of days the tweet was posted
+const passDays = (seconds) => {
+  let result = ''
+  let today = Date.now();
+  let days = Math.round((today - seconds) / (1000*60*60*24));
+  
+  if (days < 1) {
+    result = `Posted few moments ago`;
+  } else if (days === 1) {
+    result = `Posted ${days} day ago`;
+  } else {
+    result = `Posted ${days} days ago`;
+  }
+  return result;
+}
 //Loop through the tweets and append to allTweet section
 const renderTweets = function(tweets) {
     
@@ -100,6 +115,15 @@ const newTweetToggle = () => {
   }
 }
 
+//handle scroll function
+const scrollPage = () => {
+  if($(window).scrollTop() === 0) {
+    $('footer.button-up button').fadeOut(1000);
+  } else {
+    $('footer.button-up button').fadeIn(1000);
+  }
+}
+
 //Prevent code injection, secure input handling
 const escape =  function(str) {
   let div = document.createElement('div');
@@ -113,6 +137,9 @@ $(document).ready(function(){
   loadTweets();
   $('form').on('submit', handleSubmit);
   $('nav .btn-new').on('click', newTweetToggle);
-
+  $( window ).scroll(scrollPage);
+  $('footer.button-up button').on('click', () => {
+    $(document).scrollTop(0);
+  })
 })
 
