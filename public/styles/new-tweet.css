@@ -44,11 +44,12 @@
 }
 .alertMessage {
   display: none;
-  width: 100%;
+  width: auto;
   text-align: center;
   background-color: #8AEA92;
   border-radius: 20px;
   padding: 1px;
+  margin: 10px;
 }
 .alertMessage span{
   font-weight:600;
