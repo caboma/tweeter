@@ -42,7 +42,6 @@
   font-weight: 600;
   justify-content: flex-end;
 }
-
 .alertMessage {
   display: none;
   width: 100%;
@@ -51,7 +50,6 @@
   border-radius: 20px;
   padding: 1px;
 }
-
 .alertMessage span{
   font-weight:600;
   font-size: 2rem;
