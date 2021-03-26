@@ -37,3 +37,6 @@ article.tweet footer{
   border-top: 2px solid #80ADA0;
   justify-content: space-between;
 }
+article.tweet i:hover{
+  color: #8AEA92;
+}
